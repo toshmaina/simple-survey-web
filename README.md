@@ -18,7 +18,9 @@ npm install
 ```bash
 # Copy and edit environment
 cp .env.example .env
-# VITE_API_BASE_URL=http://localhost:8080
+# Defaults to /api/proxy (works with Vercel serverless proxy)
+# Optional for local Vite dev proxy target:
+# VITE_PROXY_TARGET=http://localhost:8181
 
 npm run dev
 ```
@@ -55,4 +57,6 @@ npm run preview
 - The API returns XML for all survey/question/response endpoints.
 - Auth endpoints (`/api/auth/login`) accept XML and return JSON.
 - Only ADMIN-role users can access this portal; if the JWT returns a non-admin role the portal still works — enforcement is on the API side.
-- `VITE_API_BASE_URL` in `.env` controls where the API lives. In development, Vite proxies `/api` requests to avoid CORS issues.
+- `VITE_API_BASE_URL` defaults to `/api/proxy` so browser calls stay same-origin over HTTPS.
+- Vercel serverless function `api/proxy/[...path].ts` forwards requests to the upstream HTTP API.
+- For local development, Vite proxies `/api/proxy/*` to `VITE_PROXY_TARGET` and rewrites to `/simple-survey-api/*`.
