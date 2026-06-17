@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuestions } from "../hooks/useQuestions";
 import { getSurvey } from "../api/surveys";
-import type { Question, QuestionType, QuestionOption } from "../types/survey";
+
 import {
   Button,
   Modal,
@@ -15,6 +15,7 @@ import {
   Spinner,
   Badge,
 } from "../components/ui";
+import type { QuestionType, QuestionOption, Question } from "@/types/survey";
 
 const QUESTION_TYPES: { value: QuestionType; label: string }[] = [
   { value: "short_text", label: "Short Text" },

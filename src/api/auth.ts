@@ -2,7 +2,7 @@ import axios from "axios";
 import { parseXml } from "./xml";
 import type { AuthResponse } from "../types/survey";
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api/proxy";
 
 const authClient = axios.create({ baseURL: BASE_URL });
 
